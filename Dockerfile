@@ -1,4 +1,4 @@
-ARG BASE=nvidia/cuda:11.8.0-base-ubuntu22.04
+ARG BASE=python:3.9-slim
 FROM ${BASE}
 
 RUN apt-get update && apt-get upgrade -y
@@ -6,7 +6,7 @@ RUN apt-get install -y --no-install-recommends gcc g++ make python3 python3-dev 
 RUN pip3 install llvmlite --ignore-installed
 
 # Install Dependencies:
-RUN pip3 install torch torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
+RUN pip3 install torch torchaudio
 RUN rm -rf /root/.cache/pip
 
 # Copy TTS repository contents:
